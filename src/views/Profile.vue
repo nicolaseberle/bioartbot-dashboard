@@ -46,7 +46,7 @@
                 </div>
                 <div
                   v-if="currentUser.role == 'Printer'"
-                  class="mt-2 px-3 py-2 mx-auto font-semibold leading-tight text-green-700 bg-yellow-100 rounded-lg dark:bg-yellow-700 dark:text-yellow-100"
+                  class="mt-2 px-3 py-2 mx-auto font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-700 dark:text-yellow-100"
                 >
                   {{ this.currentUser.role }}
                 </div>

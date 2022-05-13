@@ -25,7 +25,7 @@
             >
           </div>
           <div
-            v-if="multiSelectUser.length > 0"
+            v-if="multiSelectUser.length > 0 && currentUser.role == 'Admin'"
             class="ml-auto flex flex-row mr-2 my-auto"
           >
             <t-dropdown>
@@ -86,6 +86,7 @@
           </div>
           <div class="my-auto">
             <button
+              v-if="currentUser.role == 'Admin'"
               class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-indigo-600 border border-transparent rounded-lg hover:bg-indigo-500 focus:outline-none focus:shadow-outline-purple"
               @click="openCreationUserModal = true"
             >

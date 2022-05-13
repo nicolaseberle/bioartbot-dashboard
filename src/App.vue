@@ -18,6 +18,7 @@ export default {
     currentUser() {
       return this.$store.state.auth.user;
     },
+    //not use
     showAdminBoard() {
       if (this.currentUser && this.currentUser.roles) {
         return this.currentUser.roles.includes("admin");
@@ -25,6 +26,7 @@ export default {
 
       return false;
     },
+    //not use
     showPrinterBoard() {
       if (this.currentUser && this.currentUser.roles) {
         return this.currentUser.roles.includes("printer");
