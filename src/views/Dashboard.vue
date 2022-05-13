@@ -188,9 +188,14 @@
                           blurHandler,
                           keydownHandler,
                         }"
-                        class="flex border border-gray-200 rounded-md"
+                        class="flex border border-gray-200 rounded-md focus:outline-none active:outline-none"
+                        :class="{
+                          'border-0 border-none': currentUser.role == 'Printer',
+                        }"
                       >
-                        <button class="px-4 py-3 text-xs w-24">
+                        <div
+                          class="px-4 py-3 text-xs w-24 focus:outline-none active:outline-none"
+                        >
                           <span
                             class="px-3 py-2 mx-auto font-semibold leading-tight rounded-lg"
                             :class="{
@@ -202,8 +207,9 @@
                           >
                             {{ user.role }}
                           </span>
-                        </button>
+                        </div>
                         <button
+                          v-if="currentUser.role == 'Admin'"
                           class="flex items-center justify-center flex-shrink-0 px-3 py-2 text-white rounded-r hover:bg-gray-100"
                           @mousedown="mousedownHandler"
                           @focus="focusHandler"
@@ -269,14 +275,23 @@
                   <td class="px-4 py-3">
                     <div class="flex items-center space-x-4 text-sm">
                       <button
-                        class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-indigo-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                        v-if="currentUser.role == 'Admin'"
+                        class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-indigo-600 rounded-lg focus:outline-none focus:shadow-outline-gray"
                         aria-label="Send"
                         @click="sendInvitation(user.email)"
                       >
                         <font-awesome-icon icon="paper-plane" />
                       </button>
+                      <button
+                        v-else
+                        class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-gray-200 rounded-lg focus:outline-none focus:shadow-outline-gray"
+                        aria-label="Send"
+                      >
+                        <font-awesome-icon icon="paper-plane" />
+                      </button>
 
                       <button
+                        v-if="currentUser.role == 'Admin'"
                         class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-indigo-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                         aria-label="Edit"
                         @click="editSuperUser(user.id, user.email, user.role)"
@@ -293,6 +308,24 @@
                         </svg>
                       </button>
                       <button
+                        v-else
+                        class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-gray-200 rounded-lg focus:outline-none focus:shadow-outline-gray"
+                        aria-label="Edit"
+                      >
+                        <svg
+                          class="w-5 h-5"
+                          aria-hidden="true"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
+                          ></path>
+                        </svg>
+                      </button>
+
+                      <button
+                        v-if="currentUser.role == 'Admin'"
                         class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-indigo-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                         aria-label="Delete"
                         @click="
@@ -538,7 +571,6 @@ export default {
         AdminService.updateRole(email, role, this.currentUser.accessToken)
           .then(() => {
             this.listUsers[index].role = role;
-            //this.fetchAllUsers();
           })
           .catch((err) => {
             console.log(err.response);

@@ -191,7 +191,9 @@ export default {
           this.changeRole(this.user.email, this.user.role);
         }
         if (this.newPassword !== "") {
-          if (this.newPassword.length > 3) {
+          if (this.newPassword.length > 8) {
+            // WARNING
+            //the request doesn't work without oldPassword
             this.$store
               .dispatch("auth/reset_password", {
                 email: this.currentUser.user,
