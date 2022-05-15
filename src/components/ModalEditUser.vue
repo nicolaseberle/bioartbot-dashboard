@@ -77,6 +77,7 @@
                   v-model="newPassword"
                 />
               </div>
+              <!--
               <div>
                 <label class="text-gray-700 text-sm" for="role">Role</label>
                 <div class="flex flex-row mt-4 w-full justify-between">
@@ -113,6 +114,7 @@
                   </div>
                 </div>
               </div>
+              -->
             </div>
             <!--Footer-->
             <div class="">
