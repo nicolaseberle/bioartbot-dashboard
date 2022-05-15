@@ -3,12 +3,7 @@ const plugin = require("tailwindcss/plugin");
 const Color = require("color");
 
 module.exports = {
-  purge: {
-    content: [
-      "./src/**/*.{js,ts,jsx,tsx,htm,html}",
-      "./*.{js,ts,jsx,tsx,htm,html}",
-    ],
-  },
+  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     themeVariants: ["dark"],
     customForms: (theme) => ({
