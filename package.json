@@ -15,9 +15,11 @@
     "@vue/composition-api": "^1.6.1",
     "axios": "^0.21.1",
     "axios-token-interceptor": "^0.2.0",
+    "autoprefixer": "9.8.0",
     "bootstrap": "^4.6.0",
     "cookie": "^0.5.0",
     "core-js": "^3.6.5",
+    "color": "3.1.2",
     "flowbite": "^1.4.5",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
@@ -29,8 +31,10 @@
     "vue-router": "^3.5.2",
     "vue-tailwind": "^2.5.1",
     "tailwindcss": "^1.9.6",
+    "cssnano": "4.1.10",
     "tailwindcss-multi-theme": "1.0.4",
-    "vuex": "^3.6.2"
+    "vuex": "^3.6.2",
+    "vue-template-compiler": "^2.6.11"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "1.1.4",
@@ -40,16 +44,12 @@
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "autoprefixer": "9.8.0",
     "babel-eslint": "^10.1.0",
-    "color": "3.1.2",
     "commitizen": "4.1.2",
-    "cssnano": "4.1.10",
     "cz-conventional-changelog": "3.2.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "release-it": "13.6.4",
-    "vue-template-compiler": "^2.6.11"
+    "release-it": "13.6.4"
   },
   "eslintConfig": {
     "root": true,

@@ -4,7 +4,10 @@ const Color = require("color");
 
 module.exports = {
   purge: {
-    content: ["./src/**/*.{js,ts,jsx,tsx,htm,html}"],
+    content: [
+      "./src/**/*.{js,ts,jsx,tsx,htm,html}",
+      "./*.{js,ts,jsx,tsx,htm,html}",
+    ],
   },
   theme: {
     themeVariants: ["dark"],

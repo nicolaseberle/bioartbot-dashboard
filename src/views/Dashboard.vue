@@ -1,12 +1,12 @@
 <template>
-  <!-- Desktop sidebar -->
-
   <div class="flex flex-col w-full">
     <main class="h-full overflow-y-auto">
       <div class="mt-20 px-6 mx-auto grid">
+        <!-- Notification -->
         <notification-component
           :notification="currentNotification"
         ></notification-component>
+        <!-- Breadcrumb -->
         <breadcrumb-component
           :breadcrumb="[
             { id: 1, name: 'Users' },
@@ -24,6 +24,7 @@
               ></span
             >
           </div>
+          <!-- Button during multi-selection -->
           <div
             v-if="multiSelectUser.length > 0 && currentUser.role == 'Admin'"
             class="ml-auto flex flex-row mr-2 my-auto"
@@ -79,11 +80,12 @@
                     hide();
                   "
                 >
-                  Remove all
+                  Remove selection
                 </button>
               </div>
             </t-dropdown>
           </div>
+          <!-- Button add user -->
           <div class="my-auto">
             <button
               v-if="currentUser.role == 'Admin'"
@@ -95,36 +97,44 @@
             </button>
           </div>
         </div>
-        <!-- New Table -->
+        <!-- Filters -->
         <div class="flex flex-row justify-start mb-4 space-x-2">
           <button
             class="focus:outline-none active:outline-none"
             @click="filterSwitchFor('Admin')"
           >
             <span
-              class="text-xs px-4 py-3 mx-auto font-semibold leading-tight text-gray-200 bg-white hover:bg-purple-50 hover:text-purple-700 hover:border-purple-500 hover:border-2 rounded-lg focus:outline-none active:outline-none"
+              class="text-xs px-4 py-3 mx-auto border-2 border-transparent font-semibold leading-tight rounded-lg focus:outline-none active:outline-none"
               :class="{
-                'text-purple-700 bg-purple-100': filter.includes('Admin'),
+                'bg-purple-100 text-purple-700': filter.includes('Admin'),
+                'bg-white text-gray-200 hover:border hover:border-purple-500 ':
+                  !filter.includes('Admin'),
               }"
             >
               Admin
             </span>
           </button>
-          <button class="focus:outline-none active:outline-none">
+          <button
+            class="focus:outline-none active:outline-none"
+            @click="filterSwitchFor('Printer')"
+          >
             <span
-              class="text-xs px-4 py-3 mx-auto font-semibold leading-tight text-gray-200 bg-white hover:bg-yellow-50 hover:text-yellow-700 hover:border-yellow-500 rounded-lg focus:outline-none active:outline-none"
+              class="text-xs px-4 py-3 mx-auto border-2 border-transparent font-semibold leading-tight rounded-lg focus:outline-none active:outline-none"
               :class="{
-                'text-yellow-700 bg-yellow-100': filter.includes('Printer'),
+                'bg-yellow-100 text-yellow-700': filter.includes('Printer'),
+                'bg-white text-gray-200 hover:border hover:border-yellow-300 ':
+                  !filter.includes('Printer'),
               }"
-              @click="filterSwitchFor('Printer')"
             >
               Printer
             </span>
           </button>
         </div>
+        <!-- New Table -->
         <div class="w-full overflow-hidden rounded-lg">
           <div class="w-full overflow-x-auto">
             <table class="w-full whitespace-no-wrap mb-20">
+              <!-- Header of the Table -->
               <thead>
                 <tr
                   class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
@@ -136,6 +146,7 @@
                   <th class="px-4 py-3">Actions</th>
                 </tr>
               </thead>
+              <!-- Body of the Table -->
               <tbody
                 class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
               >
@@ -157,11 +168,11 @@
                   </td>
                   <td class="px-4 py-3">
                     <div class="flex items-center text-sm">
-                      <!-- Avatar with inset shadow -->
+                      <!-- Simple avatar with the first letter of the email -->
                       <div
                         class="mr-12 flex w-8 h-8 rounded-full bg-purple-700 text-center"
                         :style="{
-                          'background-color': stringToColour(user.email),
+                          'background-color': stringToColor(user.email),
                         }"
                       >
                         <div class="mx-auto my-auto text-md text-white">
@@ -180,6 +191,7 @@
                   </td>
 
                   <td>
+                    <!-- dropdown selector to chose role -->
                     <t-dropdown>
                       <div
                         slot="trigger"
@@ -393,7 +405,7 @@ import NotificationComponent from "../components/Notifications.vue";
 
 import _ from "lodash";
 
-import stringToColour from "../utils/string2color";
+import stringToColor from "../utils/string2color";
 
 export default {
   name: "dasboard-view",
@@ -598,7 +610,7 @@ export default {
       this.page = page;
       this.currentPage = page;
     },
-    stringToColour,
+    stringToColor,
   },
 };
 </script>

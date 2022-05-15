@@ -1,4 +1,4 @@
-var stringToColour = function(str) {
+var stringToColor = function (str) {
   var hash = 0;
   for (var i = 0; i < str.length; i++) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash);
@@ -11,4 +11,4 @@ var stringToColour = function(str) {
   return colour;
 };
 
-export default stringToColour;
+export default stringToColor;
