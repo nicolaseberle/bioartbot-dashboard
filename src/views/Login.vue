@@ -4,6 +4,8 @@
       <div class="flex items-center justify-center">
         <img class="w-12 mr-6" src="/logo.png" />
         <span class="text-2xl font-semibold text-gray-700">BioArtBot</span>
+        <p>{{ URL_API }}</p>
+        <p>{{ URL_FRONTEND }}</p>
       </div>
       <form class="mt-4" name="form" @submit.prevent="handleLogin">
         <label for="username" class="block">
@@ -78,6 +80,12 @@ export default {
     loggedIn() {
       return this.$store.state.auth.status.loggedIn;
     },
+    URL_API() {
+      return process.env.VUE_APP_BACKEND_API_URL;
+    },
+    URL_FRONTEND() {
+      return process.env.VUE_APP_FRONTEND_URL;
+    },
   },
   created() {
     if (this.loggedIn) {
@@ -86,6 +94,7 @@ export default {
       });
     }
   },
+
   methods: {
     handleLogin() {
       this.loading = true;
