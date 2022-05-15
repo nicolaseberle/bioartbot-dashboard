@@ -187,22 +187,25 @@ export default {
         if (!isValid) {
           return;
         }
+        if (this.user.email == this.currentUser.user) {
+          return;
+        }
+        /*
         if (this.user.role) {
           this.changeRole(this.user.email, this.user.role);
-        }
+        }*/
         if (this.newPassword !== "") {
           if (this.newPassword.length > 8) {
-            // WARNING
-            //the request doesn't work without oldPassword
             this.$store
               .dispatch("auth/reset_password", {
-                email: this.currentUser.user,
-                oldPassword: "",
+                email: this.user.email,
                 newPassword: this.newPassword,
+                oldPassword: "",
                 token: this.currentUser.accessToken,
               })
               .then((response) => {
                 console.log(response);
+                this.closeModal();
               })
               .catch((e) => console.log(e));
           }

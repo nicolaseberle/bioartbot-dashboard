@@ -1,30 +1,43 @@
-## Note:
-Open `src/services/setupInterceptors.js` and modify `config.headers` for appropriate back-end 
+# BIOARTBOT - Dashboard
 
-```js
-instance.interceptors.request.use(
-  (config) => {
-    const token = TokenService.getLocalAccessToken();
-    if (token) {
-      // config.headers["Authorization"] = 'Bearer ' + token;  // for Spring Boot back-end
-      config.headers["x-access-token"] = token; // for Node.js Express back-end
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
-```
+## Development
 
-## Project setup
+### Project setup
+
+In this case, .env will be used to setup the project
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
-# bioartbot-dashboard
+## Production
+
+### Project setup
+
+Copy .env.example to .env and change the fields
+
+### Build the project
+
+In this case, .env.production will be used to setup the project
+
+```
+npm run build
+```
+
+#### To start the containers
+
+```
+sudo docker-compose up -d
+```
+
+#### To stop the containers
+
+```
+sudo docker-compose down -v
+```
