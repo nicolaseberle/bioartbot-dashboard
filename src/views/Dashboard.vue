@@ -158,6 +158,7 @@
                   <td class="px-4 py-3 my-auto text-sm">
                     <div class="flex items-center">
                       <input
+                        v-if="currentUser.role == 'Admin'"
                         id="default-checkbox"
                         type="checkbox"
                         :value="user"
@@ -166,16 +167,22 @@
                       />
                     </div>
                   </td>
+
                   <td class="px-4 py-3">
                     <div class="flex items-center text-sm">
                       <!-- Simple avatar with the first letter of the email -->
                       <div
-                        class="mr-12 flex w-8 h-8 rounded-full bg-purple-700 text-center"
+                        class="mr-12 flex w-8 h-8 rounded-full border bg-white text-center"
                         :style="{
-                          'background-color': stringToColor(user.email),
+                          'border-color': stringToColor(user.email),
                         }"
                       >
-                        <div class="mx-auto my-auto text-md text-white">
+                        <div
+                          class="mx-auto my-auto text-md"
+                          :style="{
+                            color: stringToColor(user.email),
+                          }"
+                        >
                           {{ user.email[0].toUpperCase() }}
                         </div>
                       </div>
@@ -383,13 +390,13 @@
     <modal-creation-user-component
       v-show="openCreationUserModal"
       :open="openCreationUserModal"
-      v-on:closeModal="closeCreationUserModal()"
+      v-on:closeModal="closeCreationUserModal"
     />
     <modal-edit-user-component
       v-show="openEditUserModal"
       :open="openEditUserModal"
       :selectedUser="selectedUser"
-      v-on:closeModal="closeEditUserModal()"
+      v-on:closeModal="closeEditUserModal"
     />
   </div>
 </template>
@@ -446,7 +453,6 @@ export default {
       return this.$store.state.auth.user;
     },
     orderedUsers: function () {
-      //let res = _.filter(this.listUsers,  ["Printer", "Admin"] };
       let res = _.filter(this.listUsers, ({ role }) =>
         _.every([_.includes(this.filter, role)])
       );
@@ -479,12 +485,20 @@ export default {
         this.filter.push(name);
       }
     },
-    closeEditUserModal() {
+    closeEditUserModal(notification) {
       this.openEditUserModal = false;
+      this.currentNotification = {
+        message: notification.message,
+        type: notification.type,
+      };
       this.fetchAllUsers();
     },
-    closeCreationUserModal() {
+    closeCreationUserModal(notification) {
       this.openCreationUserModal = false;
+      this.currentNotification = {
+        message: notification.message,
+        type: notification.type,
+      };
       this.fetchAllUsers();
     },
     async fetchAllUsers() {
@@ -535,11 +549,20 @@ export default {
                 this.currentUser.accessToken
               )
                 .then(() => {
+                  this.currentNotification = {
+                    message: "The user has been removed",
+                    type: "success",
+                  };
                   this.fetchAllUsers();
                 })
                 .catch((err) => {
                   console.log(err.response);
                 });
+            } else {
+              this.currentNotification = {
+                message: "You can't remove yourself",
+                type: "danger",
+              };
             }
           }
         });

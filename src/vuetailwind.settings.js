@@ -52,7 +52,7 @@ const settings = {
     props: {
       fixedClasses: {
         wrapper:
-          "absolute transition ease-in-out delay-500 flex items-center p-4 border-l-4  rounded shadow-sm",
+          "absolute transition duration-500 ease-in-out delay-500 flex items-center p-4 border-l-4  rounded shadow-sm",
         body: "flex w-full",
         close:
           "absolute relative flex items-center justify-center ml-4 flex-shrink-0 w-6 h-6 transition duration-100 ease-in-out rounded focus:ring-2 focus:ring-blue-500 focus:outline-none focus:ring-opacity-50",
@@ -65,13 +65,13 @@ const settings = {
       },
       variants: {
         danger: {
-          wrapper: "bg-red-50 border-red-500",
-          body: "text-red-700",
+          wrapper: "absolute top-0 right-0  bg-red-100 border-red-600",
+          body: "text-red-800",
           close: "text-red-500 hover:bg-red-200",
         },
         success: {
-          wrapper: "bg-green-50 border-green-500",
-          body: "text-green-700",
+          wrapper: "absolute top-0 right-0  bg-green-100 border-green-600",
+          body: "text-green-800",
           close: "text-green-500 hover:bg-green-200",
         },
       },

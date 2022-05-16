@@ -33,6 +33,8 @@
                   placeholder="name@example.com"
                   v-validate="'required'"
                   v-model="this.currentUser.user"
+                  data-vv-name="email"
+                  autocomplete="off"
                   disabled
                 />
               </div>
@@ -41,12 +43,14 @@
                 <div
                   v-if="currentUser.role == 'Admin'"
                   class="mt-2 px-3 py-2 mx-auto font-semibold leading-tight text-green-700 bg-green-100 rounded-lg dark:bg-green-700 dark:text-green-100"
+                  autocomplete="off"
                 >
                   {{ this.currentUser.role }}
                 </div>
                 <div
                   v-if="currentUser.role == 'Printer'"
                   class="mt-2 px-3 py-2 mx-auto font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-700 dark:text-yellow-100"
+                  autocomplete="off"
                 >
                   {{ this.currentUser.role }}
                 </div>
@@ -73,7 +77,9 @@
                     placeholder="XXXXXX"
                     v-validate="'required'"
                     v-model="currentPassword"
+                    data-vv-name="currentPassword"
                     name="currentPassword"
+                    autocomplete="off"
                   />
                   <div
                     v-if="errors.has('currentPassword')"
@@ -93,7 +99,9 @@
                     placeholder="XXXXXX"
                     v-validate="'required'"
                     v-model="newPassword"
+                    data-vv-name="newPassword"
                     name="newPassword"
+                    autocomplete="off"
                   />
                   <div
                     v-if="errors.has('newPassword')"

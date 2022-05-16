@@ -15,6 +15,8 @@
             v-validate="'required'"
             type="text"
             name="username"
+            data-vv-name="username"
+            autocomplete="off"
           />
           <div v-if="errors.has('username')" class="text-red-500" role="alert">
             Email is required!
@@ -30,6 +32,8 @@
             placeholder="password"
             v-model="user.password"
             v-validate="'required'"
+            data-vv-name="password"
+            autocomplete="off"
           />
           <div v-if="errors.has('password')" class="text-red-500" role="alert">
             Password is required!

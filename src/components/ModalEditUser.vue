@@ -63,6 +63,8 @@
                   placeholder="name@example.com"
                   v-validate="'required'"
                   v-model="user.email"
+                  data-vv-name="email"
+                  autocomplete="off"
                   disabled
                 />
               </div>
@@ -74,7 +76,9 @@
                   class="w-full mt-2 px-2 text-sm py-3 border border-gray-200 bg-gray-50 rounded-md focus:border-blue-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
                   type="password"
                   placeholder="password (8 characters min.)"
+                  data-vv-name="password"
                   v-model="newPassword"
+                  autocomplete="off"
                 />
               </div>
               <!--
@@ -160,8 +164,8 @@ export default {
     },
   },
   methods: {
-    closeModal() {
-      this.$emit("closeModal", true);
+    closeModal(notification) {
+      this.$emit("closeModal", notification);
     },
     changeRole(email, role) {
       if (email !== this.currentUser.user) {
@@ -190,6 +194,10 @@ export default {
           return;
         }
         if (this.user.email == this.currentUser.user) {
+          this.closeModal({
+            message: "To change your password, go in 'Profile'",
+            type: "danger",
+          });
           return;
         }
         /*
@@ -202,12 +210,14 @@ export default {
               .dispatch("auth/reset_password", {
                 email: this.user.email,
                 newPassword: this.newPassword,
-                oldPassword: "",
                 token: this.currentUser.accessToken,
               })
               .then((response) => {
                 console.log(response);
-                this.closeModal();
+                this.closeModal({
+                  message: "Success to change password manually",
+                  type: "success",
+                });
               })
               .catch((e) => console.log(e));
           }

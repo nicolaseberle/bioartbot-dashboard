@@ -33,7 +33,7 @@
             <div
               class="flex w-10 h-10 rounded-full bg-purple-700 text-center"
               :style="{
-                'background-color': stringToColour(currentUser.user),
+                'background-color': stringToColor(currentUser.user),
               }"
             >
               <div class="mx-auto my-auto text-lg text-white">
@@ -47,7 +47,7 @@
   </div>
 </template>
 <script>
-import stringToColour from "../utils/string2color";
+import stringToColor from "../utils/string2color";
 export default {
   name: "header-component",
   computed: {
@@ -56,7 +56,7 @@ export default {
     },
   },
   methods: {
-    stringToColour,
+    stringToColor,
   },
 };
 </script>

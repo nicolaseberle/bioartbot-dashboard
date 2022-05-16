@@ -2,7 +2,7 @@
   <div class="fixed right-0 justify-end mr-6 w-64">
     <t-alert
       :variant="currentNotifcation.type"
-      :timeout="3000"
+      :timeout="4000"
       :show="currentNotifcation.show"
       @hidden="removeNotification()"
     >

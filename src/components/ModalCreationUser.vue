@@ -1,17 +1,16 @@
 <template>
   <!--<Breadcrumb breadcrumb="Modal" />-->
   <div
-    :class="
-      `modal ${!open &&
-        'opacity-0 pointer-events-none'} z-50 fixed w-full h-full top-0 left-0 flex items-center justify-center`
-    "
+    :class="`modal ${
+      !open && 'opacity-0 pointer-events-none'
+    } z-50 fixed w-full h-full top-0 left-0 flex items-center justify-center`"
   >
     <div
       @click="closeModal()"
       class="absolute w-full h-full bg-gray-900 opacity-50 modal-overlay"
     ></div>
 
-    <div class="z-50 w-1/2 mx-auto overflow-y-auto bg-white rounded ">
+    <div class="z-50 w-1/2 mx-auto overflow-y-auto bg-white rounded">
       <div
         class="absolute top-0 right-0 z-50 flex flex-col items-center mt-4 mr-4 text-sm text-white cursor-pointer modal-close"
       >
@@ -30,7 +29,7 @@
       </div>
 
       <!-- Add margin if you want to see some of the overlay behind the modal-->
-      <div class=" py-4 text-left">
+      <div class="py-4 text-left">
         <!--Title-->
         <div class="px-6 flex items-center justify-between pb-6 border-b">
           <p class="text-xl font-bold">Add New Super User</p>
@@ -63,7 +62,9 @@
                   type="email"
                   placeholder="name@example.com"
                   v-validate="'required'"
+                  data-vv-name="email"
                   v-model="user.email"
+                  autocomplete="off"
                 />
               </div>
               <div>
@@ -75,7 +76,9 @@
                   type="password"
                   placeholder="password (6 characters min.)"
                   v-validate="'required'"
+                  data-vv-name="password"
                   v-model="user.password"
+                  autocomplete="off"
                 />
                 <div
                   v-if="errors.has('password')"
@@ -87,7 +90,7 @@
               </div>
               <div>
                 <label class="text-gray-700 text-sm" for="password">Role</label>
-                <div class="flex flex-row mt-4 w-full justify-between ">
+                <div class="flex flex-row mt-4 w-full justify-between">
                   <div class="flex items-center mr-8">
                     <input
                       checked
@@ -96,6 +99,7 @@
                       value="Printer"
                       v-model="user.role"
                       name="role-radio"
+                      autocomplete="off"
                       class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     />
                     <label
@@ -111,6 +115,7 @@
                       value="Admin"
                       v-model="user.role"
                       name="role-radio"
+                      autocomplete="off"
                       class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     />
                     <label
@@ -166,8 +171,8 @@ export default {
     },
   },
   methods: {
-    closeModal() {
-      this.$emit("closeModal", true);
+    closeModal(notification) {
+      this.$emit("closeModal", notification);
     },
     addNewUser() {
       this.$validator.validateAll().then((isValid) => {
@@ -185,7 +190,10 @@ export default {
             .then(
               () => {
                 this.user.resetUser();
-                this.$emit("closeModal", true);
+                this.closeModal({
+                  message: "Success to create user",
+                  type: "success",
+                });
               },
               (error) => {
                 this.loading = false;
@@ -195,10 +203,18 @@ export default {
                     error.response.data.message) ||
                   error.message ||
                   error.toString();
+                this.closeModal({
+                  message: "Failure to create user",
+                  type: "danger",
+                });
               }
             )
             .catch((err) => {
               console.log("error :: ", err.response);
+              this.closeModal({
+                message: "Failure to create user",
+                type: "danger",
+              });
             });
         }
       });

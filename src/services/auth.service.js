@@ -8,7 +8,7 @@ class AuthService {
         password,
       })
       .then((response) => {
-        console.log(response);
+        //console.log(response);
         let tokenName = "csrf_access_token";
         let currentToken = "";
         const value = document.cookie;
@@ -40,16 +40,16 @@ class AuthService {
         )
         .then(
           (response) => {
-            console.log("Promise::solved ", response);
+            //console.log("Promise::solved ", response);
             return response.data;
           },
           (error) => {
-            console.log("Promise::rejected", error);
+            //console.log("Promise::rejected", error);
             return error.response.data;
           }
         )
         .catch(function (error) {
-          console.log("catch error :: ", error.response.data);
+          //console.log("catch error :: ", error.response.data);
           return error.response.data;
         });
     } catch (e) {
