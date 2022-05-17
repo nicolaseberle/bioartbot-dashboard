@@ -467,12 +467,12 @@ export default {
     },
   },
   watch: {
-    orderedUsers(n_orderedUsers) {
-      this.total = n_orderedUsers.length;
+    orderedUsers() {
+      this.total = this.listUsers.length;
       this.totalPages =
-        n_orderedUsers.length % this.perPage == 0
-          ? Math.floor(n_orderedUsers.length / this.perPage)
-          : Math.floor(n_orderedUsers.length / this.perPage) + 1;
+        this.listUsers.length % this.perPage == 0
+          ? Math.floor(this.listUsers.length / this.perPage)
+          : Math.floor(this.listUsers.length / this.perPage) + 1;
     },
   },
   methods: {
