@@ -4,9 +4,9 @@ FROM node:lts-alpine
 RUN npm install -g http-server
 
 # set environment variables
-ENV VUE_APP_BACKEND_API_URL http://localhost:5001
-ENV VUE_APP_FRONTEND_URL http://localhost:3000
-ENV PORT 3000
+# ENV VUE_APP_BACKEND_API_URL http://localhost:5001
+# ENV VUE_APP_FRONTEND_URL http://localhost:3000
+# ENV PORT 3000
 
 # définit le dossier 'app' comme dossier de travail
 WORKDIR /app

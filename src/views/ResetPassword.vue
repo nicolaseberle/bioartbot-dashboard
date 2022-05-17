@@ -26,21 +26,8 @@
         <label class="block mt-3">
           <label class="text-sm text-gray-700" for="password">Email</label>
           <input
-            type="password"
-            class="
-              block
-              w-full
-              mt-1
-              p-2
-              px-4
-              border-2
-              border-gray-100
-              rounded-md
-              focus:border-indigo-600
-              focus:ring
-              focus:ring-opacity-40
-              focus:ring-indigo-500
-            "
+            type="email"
+            class="block w-full mt-1 p-2 px-4 border-2 border-gray-100 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
             name="email"
             placeholder="name@example.com"
             v-model="email"
@@ -48,7 +35,7 @@
           />
           <div
             v-if="errors.has('password')"
-            class="text-xs  text-red-500"
+            class="text-xs text-red-500"
             role="alert"
           >
             Email is required :
@@ -65,16 +52,7 @@
         <div class="mt-6">
           <button
             type="submit"
-            class="
-              w-full
-              px-8
-              py-2
-              text-sm text-center text-white
-              bg-indigo-600
-              rounded-md
-              focus:outline-none
-              hover:bg-indigo-500
-            "
+            class="w-full px-8 py-2 text-sm text-center text-white bg-indigo-600 rounded-md focus:outline-none hover:bg-indigo-500"
           >
             Send me an invitation
           </button>

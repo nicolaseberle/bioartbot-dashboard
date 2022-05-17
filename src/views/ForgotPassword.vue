@@ -26,20 +26,7 @@
           >
           <input
             type="password"
-            class="
-              block
-              w-full
-              mt-1
-              p-2
-              px-4
-              border-2
-              border-gray-100
-              rounded-md
-              focus:border-indigo-600
-              focus:ring
-              focus:ring-opacity-40
-              focus:ring-indigo-500
-            "
+            class="block w-full mt-1 p-2 px-4 border-2 border-gray-100 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
             name="password"
             placeholder="password"
             v-model="password1"
@@ -47,7 +34,7 @@
           />
           <div
             v-if="errors.has('password')"
-            class="text-xs  text-red-500"
+            class="text-xs text-red-500"
             role="alert"
           >
             Password is required!
@@ -59,20 +46,7 @@
           >
           <input
             type="password"
-            class="
-              block
-              w-full
-              mt-1
-              p-2
-              px-4
-              border-2
-              border-gray-100
-              rounded-md
-              focus:border-indigo-600
-              focus:ring
-              focus:ring-opacity-40
-              focus:ring-indigo-500
-            "
+            class="block w-full mt-1 p-2 px-4 border-2 border-gray-100 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
             name="password"
             placeholder="password"
             v-model="password2"
@@ -80,7 +54,7 @@
           />
           <div
             v-if="errors.has('password')"
-            class="text-xs  text-red-500"
+            class="text-xs text-red-500"
             role="alert"
           >
             Password is required!
@@ -98,16 +72,7 @@
         <div class="mt-6">
           <button
             type="submit"
-            class="
-              w-full
-              px-4
-              py-2
-              text-sm text-center text-white
-              bg-indigo-600
-              rounded-md
-              focus:outline-none
-              hover:bg-indigo-500
-            "
+            class="w-full px-4 py-2 text-sm text-center text-white bg-indigo-600 rounded-md focus:outline-none hover:bg-indigo-500"
           >
             Reset Password
           </button>
@@ -138,11 +103,11 @@ export default {
     },
   },
   created() {
-    if (this.loggedIn) {
+    /*if (this.loggedIn) {
       this.$router.push("/dashboard").catch((err) => {
         console.log(err);
       });
-    }
+    }*/
   },
   mounted() {
     if (this.$route.query.token && this.$route.query.email) {
@@ -173,7 +138,7 @@ export default {
               )
               .then(
                 () => {
-                  this.$router.push("/dashboard").catch((err) => {
+                  this.$router.push("/login").catch((err) => {
                     console.log(err);
                   });
                 },
