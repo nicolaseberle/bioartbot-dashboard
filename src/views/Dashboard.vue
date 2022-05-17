@@ -435,6 +435,7 @@ export default {
   },
 
   async mounted() {
+    console.log(this.$store);
     if (!this.currentUser) {
       this.$router.push("/login");
     } else {

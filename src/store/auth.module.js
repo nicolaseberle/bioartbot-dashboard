@@ -47,6 +47,22 @@ export const auth = {
           console.log("catch ::", error);
         });
     },
+    async admin_reset_password({ commit }, email, newPassword, token) {
+      return await AuthService.admin_reset_password(email, newPassword, token)
+        .then(
+          (response) => {
+            commit("resetPasswordSuccess");
+            return Promise.resolve(response);
+          },
+          (error) => {
+            commit("resetPasswordFailure");
+            return Promise.reject(error);
+          }
+        )
+        .catch((error) => {
+          console.log("catch ::", error);
+        });
+    },
     forgot_password({ commit }, email) {
       return AuthService.forgot_password(email).then(
         (response) => {
