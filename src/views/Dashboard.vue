@@ -524,16 +524,24 @@ export default {
               message: "Invitation sent",
               type: "success",
             };
-            /*AdminService.sendInvitation(email, this.currentUser.accessToken)
+            AdminService.sendInvitation(email, this.currentUser.accessToken)
               .then((response) => {
-                this.currentNotification = {
-                  message: "Invitation sent",
-                  type: "info",
-                };
+                console.log(response);
+                if (response.errors) {
+                  this.currentNotification = {
+                    message: "Invitation not sent",
+                    type: "danger",
+                  };
+                } else {
+                  this.currentNotification = {
+                    message: "Invitation sent",
+                    type: "info",
+                  };
+                }
               })
               .catch((err) => {
                 console.log(err.response);
-              });*/
+              });
           }
         });
     },

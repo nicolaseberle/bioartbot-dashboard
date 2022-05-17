@@ -123,7 +123,9 @@
             <!--Footer-->
             <div class="">
               <div v-if="message" class="bg-red-200 mt-4 p-6" role="alert">
-                {{ message }}
+                <p v-for="mes in message" :key="mes">
+                  {{ mes }}
+                </p>
               </div>
             </div>
             <div class="flex justify-between pt-12">
@@ -205,22 +207,27 @@ export default {
           this.changeRole(this.user.email, this.user.role);
         }*/
         if (this.newPassword !== "") {
-          if (this.newPassword.length > 8) {
-            this.$store
-              .dispatch("auth/reset_password", {
-                email: this.user.email,
-                newPassword: this.newPassword,
-                token: this.currentUser.accessToken,
-              })
-              .then((response) => {
-                console.log(response);
+          this.$store
+            .dispatch("auth/admin_reset_password", {
+              email: this.user.email,
+              newPassword: this.newPassword,
+              token: this.currentUser.accessToken,
+            })
+            .then((response) => {
+              console.log(response);
+              this.message = [];
+              if (response.errors) {
+                response["errors"].forEach((el) => {
+                  this.message.push(el["title"]);
+                });
+              } else {
                 this.closeModal({
                   message: "Success to change password manually",
                   type: "success",
                 });
-              })
-              .catch((e) => console.log(e));
-          }
+              }
+            })
+            .catch((e) => console.log(e));
         }
       });
     },

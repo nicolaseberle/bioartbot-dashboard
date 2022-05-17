@@ -23,6 +23,37 @@ class AuthService {
   logout() {
     //TokenService.removeUser();
   }
+  admin_reset_password({ email, newPassword, token }) {
+    try {
+      return api
+        .post(
+          `/user/admin_reset_password/`,
+          {
+            email: email,
+            new_password: newPassword,
+          },
+          {
+            headers: { "X-CSRF-TOKEN": token },
+          }
+        )
+        .then(
+          (response) => {
+            //console.log("Promise::solved ", response);
+            return response.data;
+          },
+          (error) => {
+            //console.log("Promise::rejected", error);
+            return error.response.data;
+          }
+        )
+        .catch(function (error) {
+          //console.log("catch error :: ", error.response.data);
+          return error.response.data;
+        });
+    } catch (e) {
+      console.log("catch error :: ", e);
+    }
+  }
 
   reset_password({ email, oldPassword, newPassword, token }) {
     try {
