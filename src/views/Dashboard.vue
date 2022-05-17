@@ -487,6 +487,8 @@ export default {
         //add name in the filter list
         this.filter.push(name);
       }
+      this.page = 1;
+      this.currentPage = 1;
     },
     closeEditUserModal(notification) {
       this.openEditUserModal = false;
