@@ -20,7 +20,7 @@
             Users -
             <span class="text-lg"
               >Admins & Printers<span class="text-gray-500 ml-2 font-light"
-                >({{ orderedUsers.length }})</span
+                >({{ total }})</span
               ></span
             >
           </div>
@@ -468,11 +468,14 @@ export default {
   },
   watch: {
     orderedUsers() {
-      this.total = this.listUsers.length;
+      let res = _.filter(this.listUsers, ({ role }) =>
+        _.every([_.includes(this.filter, role)])
+      );
+      this.total = res.length;
       this.totalPages =
-        this.listUsers.length % this.perPage == 0
-          ? Math.floor(this.listUsers.length / this.perPage)
-          : Math.floor(this.listUsers.length / this.perPage) + 1;
+        this.total % this.perPage == 0
+          ? Math.floor(this.total / this.perPage)
+          : Math.floor(this.total / this.perPage) + 1;
     },
   },
   methods: {
