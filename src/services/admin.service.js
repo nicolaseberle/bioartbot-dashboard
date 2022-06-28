@@ -14,6 +14,7 @@ class AdminService {
         password: password,
         role: role,
       },
+      { withCredentials: true },
       { headers: { "X-CSRF-TOKEN": token } }
     );
   }
