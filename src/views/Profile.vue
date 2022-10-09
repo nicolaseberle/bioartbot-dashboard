@@ -163,14 +163,14 @@ export default {
     },
   },
   mounted() {
-    console.log();
+    //console.log();
     if (!this.currentUser) {
       this.$router.push("/login");
     }
   },
   methods: {
     handleResetPassword() {
-      console.log("handleResetPassword:: ");
+      //console.log("handleResetPassword:: ");
       this.$validator
         .validateAll()
         .then((isValid) => {
@@ -187,7 +187,7 @@ export default {
                 token: this.currentUser.accessToken,
               })
               .then((response) => {
-                console.log("handleResetPassword:: ", response);
+                //console.log("handleResetPassword:: ", response);
 
                 if (response == undefined) {
                   this.currentNotification = {

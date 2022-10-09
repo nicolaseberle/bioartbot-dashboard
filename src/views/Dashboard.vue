@@ -435,7 +435,7 @@ export default {
   },
 
   async mounted() {
-    console.log(this.$store);
+    //console.log(this.$store);
     if (!this.currentUser) {
       this.$router.push("/login");
     } else {
@@ -532,7 +532,7 @@ export default {
             };
             AdminService.sendInvitation(email, this.currentUser.accessToken)
               .then((response) => {
-                console.log(response);
+                //console.log(response);
                 if (response.errors) {
                   this.currentNotification = {
                     message: "Invitation not sent",
