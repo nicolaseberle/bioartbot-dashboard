@@ -56,7 +56,7 @@
       <span class="">Admin & Printers</span>
     </router-link>
 
-    <router-link
+    <!--<router-link     <!- Commented out until Artist API is available
       class="inline-flex pl-12 my-auto py-3 text-sm hover:bg-gray-100 transition-colors duration-150 hover:text-gray-800 items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
       :class="[$route.name === 'DashboardArtist' ? activeClass : inactiveClass]"
       to="/dashboard_artist"
@@ -72,7 +72,7 @@
         stroke="none"
       ></svg>
       <span class="">Artists</span>
-    </router-link>
+    </router-link>-->
 
     <router-link
       class="inline-flex relative px-6 py-3 mt-4 items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 hover:bg-gray-100"
