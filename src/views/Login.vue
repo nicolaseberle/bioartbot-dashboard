@@ -11,7 +11,7 @@
           <input
             class="block w-full mt-1 p-2 px-4 border-2 border-gray-100 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
             v-model="user.username"
-            placeholder="nom@example.com"
+            placeholder="name@example.com"
             v-validate="'required'"
             type="text"
             name="username"

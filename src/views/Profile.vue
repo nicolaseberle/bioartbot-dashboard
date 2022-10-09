@@ -7,7 +7,7 @@
         <notification-component
           :notification="currentNotification"
         ></notification-component>
-        <breadcrumb-component :breadcrumb="[{ id: 1, name: 'Profil' }]" />
+        <breadcrumb-component :breadcrumb="[{ id: 1, name: 'Profile' }]" />
         <div class="flex flex-col justify-between">
           <div
             class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200 w-full"

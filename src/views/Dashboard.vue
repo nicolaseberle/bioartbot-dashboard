@@ -519,7 +519,7 @@ export default {
     sendInvitation(email) {
       this.$dialog
         .confirm({
-          title: `Are you sure you want to send an email to ${email} to reset his password?`,
+          title: `Are you sure you want to send an email to ${email} to reset their password?`,
           icon: "info",
           cancelButtonText: "Cancel",
           okButtonText: "Send",
