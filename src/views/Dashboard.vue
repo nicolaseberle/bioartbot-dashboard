@@ -435,7 +435,7 @@ export default {
   },
 
   async mounted() {
-    console.log(this.$store);
+    //console.log(this.$store);
     if (!this.currentUser) {
       this.$router.push("/login");
     } else {
@@ -519,7 +519,7 @@ export default {
     sendInvitation(email) {
       this.$dialog
         .confirm({
-          title: `Are you sure you want to send an email to ${email} to reset his password?`,
+          title: `Are you sure you want to send an email to ${email} to reset their password?`,
           icon: "info",
           cancelButtonText: "Cancel",
           okButtonText: "Send",
@@ -532,7 +532,7 @@ export default {
             };
             AdminService.sendInvitation(email, this.currentUser.accessToken)
               .then((response) => {
-                console.log(response);
+                //console.log(response);
                 if (response.errors) {
                   this.currentNotification = {
                     message: "Invitation not sent",

@@ -32,7 +32,6 @@ class AdminService {
     );
   }
   removeUser(id, utc_created_at, token) {
-    console.log(utc_created_at);
     let created_at_timestamp = String(convertUTCtoTimestamp(utc_created_at));
     return api.put(
       `/user/remove/${id}/${created_at_timestamp}`,
