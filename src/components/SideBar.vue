@@ -76,7 +76,7 @@
 
     <router-link
       class="inline-flex relative px-6 py-3 mt-4 items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 hover:bg-gray-100"
-      :class="[$route.name === 'Profil' ? activeClass : inactiveClass]"
+      :class="[$route.name === 'Profile' ? activeClass : inactiveClass]"
       to="/profile"
     >
       <svg
