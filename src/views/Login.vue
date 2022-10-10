@@ -2,8 +2,10 @@
   <div class="flex items-center justify-center h-screen px-6 bg-gray-200">
     <div class="w-full max-w-sm p-6 bg-white rounded-md shadow-md">
       <div class="flex items-center justify-center">
-        <img class="w-12 mr-6" src="/logo.png" />
-        <span class="text-2xl font-semibold text-gray-700">BioArtBot</span>
+        <img class="w-auto" src="/bab_banner_left_small.png" />
+      </div>
+      <div class="flex items-center justify-center">
+        <span class="text-xl font-semibold text-gray-700">System Dashboard</span>
       </div>
       <form class="mt-4" name="form" @submit.prevent="handleLogin">
         <label for="username" class="block">

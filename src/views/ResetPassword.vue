@@ -19,7 +19,7 @@
         <span class="text-2xl font-semibold text-gray-700">BioArtBot</span>
       </div>
       <p class="text-center py-4">
-        You forgot your password, don't worry. We will send you an invitation to
+        If you forgot your password, don't worry. We'll send you an invitation to
         reset it
       </p>
       <form class="mt-4" name="form" @submit.prevent="handleSendInvitation">

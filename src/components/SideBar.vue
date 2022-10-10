@@ -4,7 +4,7 @@
       class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
       to="/"
     >
-      <div class="-mt-5 ml-6">BioArtBot</div>
+      <div class="-mt-5 ml-6">BioArtBot System Dashboard</div>
     </router-link>
     <ul class="mt-20">
       <!--<span
