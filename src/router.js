@@ -5,7 +5,8 @@ import ForgotPassword from "./views/ForgotPassword.vue";
 import ResetPassword from "./views/ResetPassword.vue";
 import Dashboard from "./views/Dashboard.vue";
 import DashboardArtists from "./views/DashboardArtist.vue";
-import Profile from "./views/Profile.vue";
+import Profile from "./views/Profile.vue"
+import Locations from "./views/Locations.vue";
 
 Vue.use(Router);
 
@@ -58,6 +59,12 @@ export const router = new Router({
       name: "Profile",
       meta: { layout: "dashboard-layout" },
       component: Profile,
+    },
+    {
+      path: "/locations",
+      name: "Locations",
+      meta: { layout: "dashboard-layout" },
+      component: Locations,
     },
   ],
 });
